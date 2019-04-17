@@ -1,0 +1,270 @@
+
+ <!-- Side Navbar -->
+ <nav class="side-navbar">
+    <div class="side-navbar-wrapper">
+      <!-- Sidebar Header    -->
+      <div class="sidenav-header d-flex align-items-center justify-content-center">
+        <!-- User Info-->
+        <!-- <form method="POST" enctype="multipart/form-data" action="#"> -->
+          <!-- <input type="file" id="changedp" class="file" (change)="photo($event)" enctype="multipart/form-data" hidden > -->
+          <div class="sidenav-header-inner text-center" > <img  src="http://10.10.4.141:3000/api/user/getsingleuserdp/{{mydp}}" class="img-fluid rounded-circle" draggable="true" (mouseenter)="dragging()">
+            <!-- <img src="../../assets/img/avatar-7.jpg" alt="person" class="img-fluid rounded-circle"> -->
+            <h2 class="h5">{{username}}</h2><span>Developer</span>
+          </div>
+          <!-- </form> -->
+        <!-- <div class="sidenav-header-inner text-center"><img src="../../assets/img/avatar-7.jpg" alt="person" class="img-fluid rounded-circle">
+          <h2 class="h5">{{username}}</h2><span>Developer</span>
+        </div> -->
+        <!-- Small Brand information, appears on minimized sidebar-->
+        <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>P</strong><strong class="text-primary">M</strong></a></div>
+      </div>
+      <!-- Sidebar Navigation Menus-->
+      <div class="main-menu">
+        <h5 class="sidenav-heading">Main</h5>
+        <ul id="side-main-menu" class="side-menu list-unstyled">                  
+          <!-- <li><a href="index.html"> <i class="icon-home"></i>Home                             </a></li>
+          <li><a href="forms.html"> <i class="icon-form"></i>Forms                             </a></li>
+          <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts                             </a></li> -->
+          <li class="active"><a> <i class="icon-grid"></i>Developer                             </a></li>
+          <li><a href="#projectdropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Project </a>
+            <ul id="projectdropdownDropdown" class="collapse list-unstyled ">
+              <li><a (click)="projectlist()">Project List</a></li>
+              <!-- <li><a href="#">Update Status</a></li> -->
+              <!-- <li><a href="#">Page</a></li> -->
+            </ul>
+          </li>
+
+          <!-- <li><a href="#developerdropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Developer </a>
+            <ul id="developerdropdownDropdown" class="collapse list-unstyled ">
+              <li><a href="#">Page</a></li>
+              <li><a href="#">Page</a></li>
+              <li><a href="#">Page</a></li>
+            </ul>
+          </li> -->
+          <!-- <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page                             </a></li>
+          <li> <a href="#"> <i class="icon-mail"></i>Demo
+              <div class="badge badge-warning">6 New</div></a></li> -->
+        </ul>
+      </div>
+      <!-- <div class="admin-menu">
+        <h5 class="sidenav-heading">Second menu</h5>
+        <ul id="side-admin-menu" class="side-menu list-unstyled"> 
+          <li> <a href="#"> <i class="icon-screen"> </i>Demo</a></li>
+          <li> <a href="#"> <i class="icon-flask"> </i>Demo
+              <div class="badge badge-info">Special</div></a></li>
+          <li> <a href=""> <i class="icon-flask"> </i>Demo</a></li>
+          <li> <a href=""> <i class="icon-picture"> </i>Demo</a></li>
+        </ul>
+      </div> -->
+    </div>
+  </nav>
+  <!------------->
+  <div id="myModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left" style="padding-top:15%">
+    <div role="document" class="modal-dialog" >
+      <div class="modal-content">
+        <!-- <div class="modal-header" >
+            {{username | uppercase}}
+          <h5 id="exampleModalLabel" class="modal-title"></h5>
+          <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+        </div> -->
+        <p style="padding-left:45%;color:#38A1F3"><b>{{username | uppercase}}</b></p>
+        <form method="POST" enctype="multipart/form-data" action="#">
+          <input type="file" id="changedp" class="file" (change)="photo($event)" enctype="multipart/form-data" hidden >
+          <div class="modal-body" style="padding-left:20%" id="myphoto">
+            <img src="http://10.10.4.141:3000/api/user/getsingleuserdp/{{ mydp }}" class="img-fluid img-rounded" style="width:304px;height:236x;">
+          </div>
+          </form>
+       
+        <!-- <div class="modal-footer">
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="page">
+    <!-- navbar-->
+    <header class="header">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <div class="navbar-holder d-flex align-items-center justify-content-between">
+            <div class="navbar-header"><a id="toggle-btn"  class="menu-btn"><i class="icon-bars"> </i></a><a href="" class="navbar-brand">
+                <div class="brand-text d-none d-md-inline-block"><span>Project </span><strong class="text-primary">Manager</strong></div></a></div>
+            <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+           
+              <!-- Log out-->
+              <li class="nav-item"><a> <span class="d-none d-sm-inline-block" style="color:aliceblue" (click)="project.logout()">Logout</span><i class="fa fa-sign-out" style="color:aliceblue"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- Breadcrumb-->
+    <div class="breadcrumb-holder">
+      <div class="container-fluid">
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a style="color:#05AE0E" routrerLink="Developer">Home</a></li>
+          <li class="breadcrumb-item active">Developer</li>
+        </ul>
+      </div>
+    </div>
+       <!------------------------------------------------------------------------------------->
+
+    <br><br>
+    <div class="container" id="tourpackages-carousel" *ngIf="project_list">
+      <div class="row"  >
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" *ngFor="let project of projectdetails; let i = index">
+          <div class="thumbnail">
+              <div class="caption">
+                <div class='col-lg-12'>
+                    <span class="icon-credit-card"></span>
+                    <span class="icon-trash pull-right text-primary"></span>
+                </div>
+                <div class='col-lg-12 well well-add-card'>
+                   <!-- <span> <h4>PROJECT NAME:</h4> <h5>{{project.projectname}}</h5></span> -->
+                   <span>Project Name </span>&nbsp;<span>:</span>&nbsp;<strong class="text-primary">{{project.projectname}}</strong>
+                </div>
+                <div class='col-lg-12'>
+
+                   <span>Project Deascription:</span>
+                    <p class="text-muted">{{project.projectdetails}}</p>
+                </div>
+                <!-- <button type="button" class="btn btn-primary btn-xs btn-update btn-add-card">Enter</button> -->
+                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-xs btn-update btn-add-card"  (click)="status(project)">Enter</button>
+                <!-- <button type="button" class="btn btn-danger btn-xs btn-update btn-add-card">Complete</button> -->
+                <span class='glyphicon glyphicon-exclamation-sign text-danger pull-right icon-style'></span>
+            </div>
+          </div>
+        </div>            
+</div>
+</div>
+   <!------------------------------------------------------------------------------------->
+
+<!-- <div class="col-lg-4">
+  <div class="card">
+    <div class="card-header d-flex align-items-center">
+      <h4>Modal Form</h4>
+    </div>
+    <div class="card-body text-center">
+      <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Form in simple modal </button>
+    </div>
+  </div>
+</div> -->
+      <!-- Modal-->
+      <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+        <div role="document" class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 id="exampleModalLabel" class="modal-title">Signin Modal</h5>
+              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+              <p>Choose Option</p>
+              <form>
+                <div class="form-group">
+                  <button type="button" data-dismiss="modal" [disabled]="opn" data-toggle="modal" data-target="#myModal1" class="btn btn-primary">Add Status</button>
+                </div>
+                <div class="form-group">       
+                  <button type="button" data-dismiss="modal" [disabled]="opn1" data-toggle="modal" data-target="#myModal2" class="btn btn-primary">Update Status</button>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+   <!------------------------------------------------------------------------------------->
+
+      <div id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+        <div role="document" class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 id="exampleModalLabel" class="modal-title">Add Status</h5>
+              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">       
+                  <label>Working Hours</label>
+                  <input type="text" placeholder="Working Hours" #newworkinghours class="form-control" >
+                </div>
+                <div class="form-group">       
+                  <label>Description</label>
+                  <input type="text" placeholder="Description" #newdescription class="form-control" >
+                </div>
+                <!-- <div class="form-group">       
+                  <input type="submit" value="Submit" class="btn btn-primary">
+                </div> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+              <button type="button" data-dismiss="modal" class="btn btn-primary" (click)="save(newworkinghours.value,newdescription.value)">Save New Data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+   <!------------------------------------------------------------------------------------->
+
+      <div id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+        <div role="document" class="modal-dialog">
+          <div class="modal-content" *ngFor="let projects of projectdetails1">
+            <div class="modal-header">
+              <h5 id="exampleModalLabel" class="modal-title">Update Status</h5>
+              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" >
+              <form>
+                <div class="form-group">
+                  <label>Project Id</label>
+                  <input type="text" placeholder="Project Id" id="pid" class="form-control" disabled value="{{projects.projectid}}({{projects.projectname}})">
+                </div>
+                <div class="form-group">       
+                  <label>Working Hours</label>
+                  <input type="text" placeholder="Working Hours" id="Workinghours" class="form-control" value={{projects.projecttime}}>
+                </div>
+                <div class="form-group">       
+                  <label>Description</label>
+                  <input type="text" placeholder="Description" id="description" class="form-control" value={{projects.description}}>
+                </div>
+                <!-- <div class="form-group">       
+                  <input type="submit" value="Submit" class="btn btn-primary">
+                </div> -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+              <button type="button" data-dismiss="modal" class="btn btn-primary" (click)="update(projects)">Save Updated Data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+         <!------------------------------------------------------------------------------------->
+
+      <div class="alert alert-success alert-dismissible"  *ngIf="success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> Process is succesfully completed.      </div>
+      <div class="alert alert-danger alert-dismissible" *ngIf="failed">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Danger!</strong> Process is failed.
+      </div>
+        <!------------------------------------------------------------------------------------->
+
+
+    <footer class="main-footer">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6">
+            <p>Your company &copy; 2017-2019</p>
+          </div>
+          <div class="col-sm-6 text-right">
+            <p>User Name <a href="https://bootstrapious.com/p/bootstrap-4-dashboard" class="external">{{username}}</a></p>
+            <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions and it helps me to run Bootstrapious. Thank you for understanding :)-->
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>

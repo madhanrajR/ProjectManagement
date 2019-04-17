@@ -1,0 +1,430 @@
+
+ <!-- Side Navbar -->
+ <nav class="side-navbar">
+        <div class="side-navbar-wrapper">
+          <!-- Sidebar Header    -->
+          <div class="sidenav-header d-flex align-items-center justify-content-center">
+            <!-- User Info-->
+            <!-- <form method="POST" enctype="multipart/form-data" action="#"> -->
+              <!-- <input type="file" id="changedp" class="file" (change)="photo($event)" enctype="multipart/form-data" hidden > -->
+              <div class="sidenav-header-inner text-center" > <img  src="http://10.10.4.141:3000/api/user/getsingleuserdp/{{mydp}}" class="img-fluid rounded-circle" draggable="true" (mouseenter)="dragging()">
+                <!-- <img src="../../assets/img/avatar-7.jpg" alt="person" class="img-fluid rounded-circle"> -->
+                <h2 class="h5">{{username}}</h2><span>ADMIN</span>
+              </div>
+              <!-- </form> -->
+            <!-- <div class="sidenav-header-inner text-center"><img src="../../assets/img/avatar-7.jpg" alt="person" class="img-fluid rounded-circle">
+              <h2 class="h5">{{username}}</h2><span>ADMIN</span>
+            </div> -->
+            <!-- Small Brand information, appears on minimized sidebar-->
+            <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>P</strong><strong class="text-primary">M</strong></a></div>
+          </div>
+          <!-- Sidebar Navigation Menus-->
+          <div class="main-menu">
+            <h5 class="sidenav-heading">Main</h5>
+            <ul id="side-main-menu" class="side-menu list-unstyled">                  
+              <!-- <li><a href="index.html"> <i class="icon-home"></i>Home                             </a></li>
+              <li><a href="forms.html"> <i class="icon-form"></i>Forms                             </a></li>
+              <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts                             </a></li> -->
+              <li class="active"><a> <i class="icon-grid"></i>Admin                             </a></li>
+              <li><a href="#projectdropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Project </a>
+                <ul id="projectdropdownDropdown" class="collapse list-unstyled ">
+                  <li><a (click)="addproject()">Add Project</a></li>
+                  <li><a (click)="projectlist()">Project List</a></li>
+                  <!-- <li><a (click)="addproject()">Complete Project List</a></li> -->
+                </ul>
+              </li>
+
+              <li><a href="#developerdropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Developer </a>
+                <ul id="developerdropdownDropdown" class="collapse list-unstyled ">
+                    <li><a (click)="adddeveloper()">Add Developer</a></li>
+                    <li><a (click)="developerlist()">Developer List</a></li>
+                </ul>
+              </li>
+              <!-- <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page                             </a></li>
+              <li> <a href="#"> <i class="icon-mail"></i>Demo
+                  <div class="badge badge-warning">6 New</div></a></li> -->
+            </ul>
+          </div>
+          <!-- <div class="admin-menu">
+            <h5 class="sidenav-heading">Second menu</h5>
+            <ul id="side-admin-menu" class="side-menu list-unstyled"> 
+              <li> <a href="#"> <i class="icon-screen"> </i>Demo</a></li>
+              <li> <a href="#"> <i class="icon-flask"> </i>Demo
+                  <div class="badge badge-info">Special</div></a></li>
+              <li> <a href=""> <i class="icon-flask"> </i>Demo</a></li>
+              <li> <a href=""> <i class="icon-picture"> </i>Demo</a></li>
+            </ul>
+          </div> -->
+        </div>
+      </nav>
+      <div id="myModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left" style="padding-top:15%">
+        <div role="document" class="modal-dialog" >
+          <div class="modal-content">
+            <!-- <div class="modal-header" >
+                {{username | uppercase}}
+              <h5 id="exampleModalLabel" class="modal-title"></h5>
+              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+            </div> -->
+            <p style="padding-left:45%;color:#38A1F3"><b>{{username | uppercase}}</b></p>
+            <form method="POST" enctype="multipart/form-data" action="#">
+              <input type="file" id="changedp" class="file" (change)="photo($event)" enctype="multipart/form-data" hidden >
+              <div class="modal-body" style="padding-left:20%" id="myphoto">
+                <img src="http://10.10.4.141:3000/api/user/getsingleuserdp/{{ mydp }}" class="img-fluid img-rounded" style="width:304px;height:236x;">
+              </div>
+              </form>
+           
+            <!-- <div class="modal-footer">
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="page">
+        <!-- navbar-->
+        <header class="header">
+          <nav class="navbar">
+            <div class="container-fluid">
+              <div class="navbar-holder d-flex align-items-center justify-content-between">
+                <div class="navbar-header"><a id="toggle-btn"  class="menu-btn"><i class="icon-bars"> </i></a><a href="" class="navbar-brand">
+                    <div class="brand-text d-none d-md-inline-block"><span>Project </span><strong class="text-primary">Manager</strong></div></a></div>
+                <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+               
+                  <!-- Log out-->
+                  <li class="nav-item"><a> <span class="d-none d-sm-inline-block" style="color:aliceblue" (click)="project.logout()">Logout</span><i class="fa fa-sign-out" style="color:aliceblue"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </header>
+        <!-- Breadcrumb-->
+        <div class="breadcrumb-holder">
+          <div class="container-fluid">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a style="color:#05AE0E" routrerLink="Admin">Home</a></li>
+              <li class="breadcrumb-item active">Admin       </li>
+            </ul>
+          </div>
+        </div>
+           <!------------------------------------------------------------------------------------->
+
+<br><br>
+        <div class="row" *ngIf="add_project">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                      <h4>Add Project Details</h4>
+                    </div>
+                    <div class="card-body" >
+                      <!-- <form> -->
+                        <div class="form-group">
+                          <label>Project Id</label>
+                          <input type="text" placeholder="Project Id" #projectid class="form-control">
+                        </div>
+                        <div class="form-group">       
+                          <label>Project Name</label>
+                          <input type="text" placeholder="Project Name" #projectname class="form-control">
+                        </div>
+                        <div class="form-group">       
+                                <label>Project Description</label>
+                                <textarea class="form-control" rows="5" #projectdetail id="comment"></textarea>
+                                        
+                              </div>
+                        <div class="form-group">       
+                          <input type="submit" value="Submit" class="btn btn-primary" (click)="projectsubmit(projectid.value,projectname.value,projectdetail.value)">
+                          <input type="submit" value="Cancel" class="btn btn-danger" (click)="projectcancel()">
+                        </div>
+                      <!-- </form> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                    </div>
+                </div>
+
+   <!------------------------------------------------------------------------------------->
+
+                <div class="row" *ngIf="add_developer">
+                    <div class="col-lg-3">
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="card">
+                        <div class="card-header d-flex align-items-center">
+                          <h4>Add Developer Details</h4>
+                        </div>
+                        <div class="card-body" >
+                          <!-- <form> -->
+                            <div class="form-group">
+                              <label>Developer Name</label>
+                              <input type="text" placeholder="Developer Name" #devname class="form-control">
+                            </div>
+                            <div class="form-group">       
+                              <label>Developer Id</label>
+                              <input type="text" placeholder="Developer Id" #devid class="form-control">
+                            </div>
+                            <div class="form-group">       
+                                <label>Developer Password</label>
+                                <input type="password" placeholder="Developer Password" #devpwd class="form-control">
+                              </div>
+                            <!-- <div class="form-group">       
+                                    <label>Project Description</label>
+                                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                                            
+                                  </div> -->
+                            <div class="form-group">       
+                              <input type="submit" value="Submit" class="btn btn-primary" (click)="Developersubmit(devname.value,devid.value,devpwd.value)">
+                              <input type="submit" value="Cancel" class="btn btn-danger" (click)="developercancel()">
+
+                            </div>
+                          <!-- </form> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                        </div>
+                    </div>
+          <!------------------------------------------------------------------------------------->
+             
+                    <div class="container" id="tourpackages-carousel" *ngIf="project_list">
+                        <div class="row"  >
+                          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" *ngFor="let project of projectdetails; let i = index">
+                            <div class="thumbnail">
+                                <div class="caption">
+                                  <div class='col-lg-12'>
+                                      <span class="icon-credit-card"></span>
+                                      <span class="icon-trash pull-right text-primary"></span>
+                                  </div>
+                                  <div class='col-lg-12 well well-add-card'>
+                                     <!-- <span> <h4>PROJECT NAME:</h4> <h5>{{project.projectname}}</h5></span> -->
+                                     <span>Project Name </span>&nbsp;<span>:</span>&nbsp;<strong class="text-primary">{{project.projectname}}</strong>
+                                  </div>
+                                  <div class='col-lg-12'>
+
+                                     <span>Project Deascription:</span>
+                                      <p class="text-muted">{{project.projectdetails}}</p>
+                                  </div>
+                                  <button type="button" class="btn btn-primary btn-xs btn-update btn-add-card" (click)="viewdeveloper(project)">View developer</button>
+                                  <!-- <button type="button" class="btn btn-danger btn-xs btn-update btn-add-card">Complete</button> -->
+                                  <span class='glyphicon glyphicon-exclamation-sign text-danger pull-right icon-style'></span>
+                              </div>
+                            </div>
+                          </div>            
+              </div>
+            </div>
+          <!------------------------------------------------------------------------------------->
+         
+         <div class="container" *ngIf="developer_list" id="mycss">
+          
+          <br><br>
+            <div class="row" >                
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" *ngFor="let developer of developerdetails; let i = index" >
+                    <!-- <div style="height:500px;background: red"> -->
+                    <div class="card-container">
+                       <div class="card">
+                           <div class="front">
+                               <div class="cover">
+                                   <!-- <img src="https://www.clipartsgram.com/image/129556292-kyz84k3.jpg"/> -->
+                               </div>
+                               <div class="user">
+                                   <img class="img-circle" src="http://10.10.4.141:3000/api/user/getsingleuserdp/{{ developer.userID }}"/>
+                               </div>
+                               <!-- <div class="user" *ngIf="developer.picture1">
+                                  <img class="img-circle" src="../../assets/defaultpic.png"/>
+                              </div> -->
+                               <div class="content">
+                                   <div class="main">
+                                      <h3 class="name">{{developer.username}}</h3>
+                                      <p class="profession">{{developer.roles}}</p>
+                                       <p class="text-center">"I'm the new Sinatra, and since I made it here I can make it anywhere, yeah, they love me everywhere"</p>
+                                   </div>
+                                   <div class="footer">
+                                       <i class="fa fa-mail-forward"></i> Auto Rotation
+                                   </div>
+                               </div>
+                           </div> <!-- end front panel -->
+                           <div class="back">
+                               <div class="header">
+                                   <h5 class="motto">"To be or not to be, this is my awesome motto!"</h5>
+                               </div>
+                               <div class="content">
+                                   <div class="main">
+                                       <h4 class="text-center">Job Description</h4>
+                                       <p class="text-center">Web design, Adobe Photoshop, HTML5, CSS3, Corel and many others...</p>
+       
+                                       <div class="stats-container">
+                                           <div class="stats">
+                                               <h4>235</h4>
+                                               <p>
+                                                   Followers
+                                               </p>
+                                           </div>
+                                           <div class="stats">
+                                               <h4>114</h4>
+                                               <p>
+                                                   Following
+                                               </p>
+                                           </div>
+                                           <div class="stats">
+                                               <h4>35</h4>
+                                               <p>
+                                                   Projects
+                                               </p>
+                                           </div>
+                                       </div>
+       
+                                   </div>
+                               </div>
+                               <div class="footer">
+                                   <div class="social-links text-center">
+                                       <a href="http://deepak646.blogspot.in/" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                                       <a href="http://deepak646.blogspot.in/" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                                       <a href="http://deepak646.blogspot.in/" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                                   </div>
+                               </div>
+                           </div> <!-- end back panel -->
+                       </div> <!-- end card -->
+                   </div> <!-- end card-container -->
+               <!-- </div> -->
+              </div>
+</div>
+</div>
+     
+
+   <!------------------------------------------------------------------------------------->
+         
+   <div class="container" *ngIf="developer_list1" id="mycss">
+          
+    <br><br>
+      <div class="row" >                
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" *ngFor="let developer of developerdetails1; let i = index" >
+              <!-- <div style="height:500px;background: red"> -->
+              <div class="card-container">
+                 <div class="card">
+                     <div class="front">
+                         <div class="cover">
+                             <!-- <img src="https://www.clipartsgram.com/image/129556292-kyz84k3.jpg"/> -->
+                         </div>
+                         <div class="user">
+                             <img class="img-circle" src="http://10.10.4.141:3000/api/user/getsingleuserdp/{{ developer.userID }}"/>
+                         </div>
+                         <!-- <div class="user" *ngIf="developer.picture1">
+                            <img class="img-circle" src="../../assets/defaultpic.png"/>
+                        </div> -->
+                         <div class="content">
+                             <div class="main">
+                                <h3 class="name">{{developer.username}}</h3>
+                                <p class="profession">{{developer.roles}}</p>
+                                 <p class="text-center">"I'm the new Sinatra, and since I made it here I can make it anywhere, yeah, they love me everywhere"</p>
+                             </div>
+                             <div class="footer">
+                                 <i class="fa fa-mail-forward"></i> Auto Rotation
+                             </div>
+                         </div>
+                     </div> <!-- end front panel -->
+                     <div class="back">
+                         <div class="header">
+                             <h5 class="motto">"To be or not to be, this is my awesome motto!"</h5>
+                         </div>
+                         <div class="content">
+                             <div class="main">
+                                 <h4 class="text-center">Job Description</h4>
+                                 <p class="text-center">Web design, Adobe Photoshop, HTML5, CSS3, Corel and many others...</p>
+ 
+                                 <div class="stats-container">
+                                     <div class="stats">
+                                         <!-- <h4>235</h4>
+                                         <p>
+                                             Followers
+                                         </p> -->
+                                     </div>
+                                     <div class="stats">
+                                     </div>
+                                     <div class="stats">
+                                         <!-- <h4>35</h4>
+                                         <p>
+                                             Projects
+                                         </p> -->
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="footer">
+                             <div class="social-links text-center">
+                                    <input type="submit" value="View Status" class="btn btn-primary" (click)="viewstatus(developer)" style="margin-left:20px">
+                                 <!-- <a href="http://deepak646.blogspot.in/" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                                 <a href="http://deepak646.blogspot.in/" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                                 <a href="http://deepak646.blogspot.in/" class="twitter"><i class="fa fa-twitter fa-fw"></i></a> -->
+                             </div>
+                         </div>
+                     </div> <!-- end back panel -->
+                 </div> <!-- end card -->
+             </div> <!-- end card-container -->
+         <!-- </div> -->
+        </div>
+</div>
+</div>
+
+   <!------------------------------------------------------------------------------------->
+
+<br><br>
+<div class="row" >  
+        <div class="col-lg-3"></div> 
+<div class="col-lg-6" *ngIf="showtable">
+    <div class="card">
+      <div class="card-header">
+        <h4>Status table</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>ProjectId</th>
+                <th>Project Name</th>
+                <th>WorkingHours</th>
+                <th>Description</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pr of projectdetails1; let i = index">
+                <td>{{pr.projectid}}</td>
+                <td>{{pr.projectname}}</td>
+                <td>{{pr.Workinghours}}</td>
+                <td>{{pr.projectdetails}}</td>
+                <td>{{pr.Statusdate}}</td>
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3"></div> 
+</div>
+   <!------------------------------------------------------------------------------------->
+
+<div class="alert alert-success alert-dismissible"  *ngIf="success">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Success!</strong> Process is succesfully completed.      </div>
+<div class="alert alert-danger alert-dismissible" *ngIf="failed">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Danger!</strong> Process is failed.
+</div>
+   <!------------------------------------------------------------------------------------->
+
+        <footer class="main-footer">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-6">
+                <p>Your company &copy; 2017-2019</p>
+              </div>
+              <div class="col-sm-6 text-right">
+                <p>User Name <a href="https://bootstrapious.com/p/bootstrap-4-dashboard" class="external">{{username}}</a></p>
+                <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions and it helps me to run Bootstrapious. Thank you for understanding :)-->
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
